@@ -3,8 +3,9 @@ const connection = require('../db-config');
 const db = connection.promise();
 
 const findAllProducts = ({ isAvailable }) => {
-  let query = `SELECT pdt.*, c.name AS category, r.text AS review FROM products pdt 
+  let query = `SELECT pdt.*, c.name AS category, r.text AS review, sc.name AS subcategory FROM products pdt 
   JOIN categories c ON pdt.categoryId = c.id
+  JOIN subCategories sc ON pdt.subCategoryId = sc.id
   JOIN reviews r ON r.productId = pdt.id`;
 
   const params = [];
@@ -18,9 +19,10 @@ const findAllProducts = ({ isAvailable }) => {
 };
 
 const findAllByCategory = (name, isAvailable) => {
-  let query = `SELECT pdt.*, c.name AS category, r.text AS review FROM products pdt 
+  let query = `SELECT pdt.*, c.name AS category, r.text AS review, sc.name AS subcategory FROM products pdt 
   JOIN categories c ON pdt.categoryId = c.id
-  JOIN reviews r ON r.productId = pdt.id 
+  JOIN subCategories sc ON pdt.subCategoryId = sc.id
+  JOIN reviews r ON r.productId = pdt.id
   WHERE c.name = ?`;
 
   const params = [name];
@@ -33,8 +35,9 @@ const findAllByCategory = (name, isAvailable) => {
   return db.query(query, params);
 };
 
-const findOneById = (id) => db.query(`SELECT pdt.*, c.name AS category, r.text AS review FROM products pdt 
+const findOneById = (id) => db.query(`SELECT pdt.*, c.name AS category, r.text AS review, sc.name AS subcategory FROM products pdt 
 JOIN categories c ON pdt.categoryId = c.id
+JOIN subCategories sc ON pdt.subCategoryId = sc.id
 JOIN reviews r ON r.productId = pdt.id
 WHERE pdt.id = ?`, [id]);
 
