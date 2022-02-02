@@ -2,7 +2,7 @@ const connection = require('../db-config');
 
 const db = connection.promise();
 
-const findAllProducts = ({ isAvailable }) => {
+const findAllProducts = ({ isAvailable, isEssential }) => {
   let query = `SELECT pdt.*, c.name AS category, r.text AS review, sc.name AS subcategory FROM products pdt 
   JOIN categories c ON pdt.categoryId = c.id
   JOIN subCategories sc ON pdt.subCategoryId = sc.id
@@ -10,9 +10,15 @@ const findAllProducts = ({ isAvailable }) => {
 
   const params = [];
 
-  if (isAvailable) {
+  if (isAvailable && isEssential) {
+    query += ' WHERE pdt.isAvailable = ? AND pdt.isEssential = ?';
+    params.push(isAvailable === 'true', isEssential === 'true');
+  } else if (isAvailable) {
     query += ' WHERE pdt.isAvailable = ?';
     params.push(isAvailable === 'true');
+  } else if (isEssential) {
+    query += ' WHERE pdt.isEssential = ?';
+    params.push(isEssential === 'true');
   }
 
   return db.query(query, params);

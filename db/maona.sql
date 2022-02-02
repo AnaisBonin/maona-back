@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS `orders`;
 DROP TABLE IF EXISTS `keywordArticle`;
 DROP TABLE IF EXISTS `productFabric`;
 DROP TABLE IF EXISTS `paragraphs`;
-DROP TABLE IF EXISTS `testimonies`;
+DROP TABLE IF EXISTS `testimonials`;
 DROP TABLE IF EXISTS `products`;
 DROP TABLE IF EXISTS `fabrics`;
 DROP TABLE IF EXISTS `keywords`;
@@ -190,14 +190,14 @@ VALUES
 ;
 
 
-CREATE TABLE `testimonies` (
+CREATE TABLE `testimonials` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `text` TEXT NOT NULL,
   `userId` INT NOT NULL,
   FOREIGN KEY (userId) REFERENCES users(id)
 );
 
-INSERT INTO `testimonies`(`id`, `text`, `userId`) 
+INSERT INTO `testimonials`(`id`, `text`, `userId`) 
 VALUES 
   (1, "J'adore les produits Maona. Les finissions sont parfaites, la qualité est excellente et le service client irreprochable. Je recommande !", 1),
   (2, "J'ai passé commande chez Maona il y deux mois, depuis mon enfant dort tellement bien ! Leurs gigoteuses sont toutes douces", 2)
