@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `productImage`;
 DROP TABLE IF EXISTS `images`;
 DROP TABLE IF EXISTS `reviews`;
 DROP TABLE IF EXISTS `orderLines`;
@@ -59,7 +60,8 @@ VALUES
   (6, 'bavoirs', 2),
   (7, 'gigoteuses', 2),
   (8, 'protèges carnet de santé', 2),
-  (9, 'couvertures', 2)
+  (9, 'couvertures', 2),
+  (10, 'accessoires', 1)
 ;
 
 
@@ -72,7 +74,7 @@ CREATE TABLE `articles` (
 
 INSERT INTO `articles`(`id`, `title`, `img`, `date`) 
 VALUES 
-  (1, 'Quelle gigoteuse choisir pour son enfant', 'image link', 20220130);
+  (1, 'Quelle gigoteuse choisir pour son enfant', '/uploads/baby.png', 20220130);
 
 
 CREATE TABLE `keywords` (
@@ -131,29 +133,78 @@ INSERT INTO `products` (
   `subCategoryId`
   ) 
 VALUES 
-  (1, 'gigoteuse été', 'Gigoteuse pour bébé en lin', "Description d'une gigoteuse en lin pour l'été, pour les grosses chaleurs. Respirant.", 82, 3, true, true, 2, 7), 
-  (2, 'gigoteuse hivers', 'Gigoteuse pour bébé en coton', "Description d'une gigoteuse en coton pour passer l'hiver au chaud", 92, 2, true, false, 2, 7)
+  (1, 'Gigoteuse été', 'Gigoteuse pour bébé en lin', "Description d'une gigoteuse en lin pour l'été, pour les grosses chaleurs. Respirant.", 82, 3, true, true, 2, 7), 
+  (2, 'Gigoteuse hivers', 'Gigoteuse pour bébé en coton', "Description d'une gigoteuse en coton pour passer l'hiver au chaud", 92, 2, true, false, 2, 7),
+  (3, 'Robe simple', 'Robe en coton - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. ', "Description d'une robe simple. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 50, 5, true, false, 1, 2),
+  (4, 'Robe courte', 'Robe courte en lin - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'une robe courte en lin - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 60, 2, true, true, 1, 2),
+  (5, 'Pantalon ample', 'Pantalon ample - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un pantalon ample en lin - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 65, 2, true, false, 1, 5),
+  (6, 'Blouse', 'Blouse en lin - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'une blouse en lin - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 105, 3, true, true, 1, 3),
+  (7, 'Chouchou rouge', 'Chouchou rose en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un chouchou rose en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 25, 20, true, true, 1, 10),
+  (8, 'Chouchou vert', 'Chouchou vert en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un chouchou vert en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 25, 0, false, false, 1, 10),
+  (9, 'Bavoir bébé', 'Bavoir bébé en coton - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un bavoir bébé en coton-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 78, 2, true, true, 2, 6),
+  (10, 'Bavoir bébé large', 'Bavoir bébé large en coton - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un bavoir bébé largeen coton-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 86, 1, true, false, 2, 6),
+  (11, 'Couverture en coton', 'Couverture en coton - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'une couverture en coton-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 90, 3, true, true, 2, 9),
+  (12, 'Couverture en lin ', 'Couverture en lin  - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'une couverture en lin -  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 95, 2, true, false, 2, 9),
+  (13, 'Chouchou bleu', 'Chouchou bleu en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un chouchou bleu en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 25, 20, true, false, 1, 10),
+  (14, 'Housse de carnet de santé', 'Housse de carnet de santé - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'une housse de carnet de santé - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 33, 3, true, false, 2, 8)
 ;
 
 
 CREATE TABLE `images` (
   `id` INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
-  `link` VARCHAR(350) NOT NULL,
-  `coverPicture` BOOLEAN DEFAULT(FALSE),
-  `productId` INT NOT NULL,
-  FOREIGN KEY (productId) REFERENCES products(id)
+  `link` VARCHAR(350) NOT NULL
 );
 
 INSERT INTO `images` (
+  `id`,
   `title`,
-  `link`,
-  `coverPicture`,
-  `productId`
+  `link`
 )
 VALUES
-  ("Gigoteuse d'été", 'lien image' ,true, 1),
-  ("Gigoteuse d'hiver", 'lien image',true, 2)
+  (1, "Gigoteuse forêt", '/uploads/gigoteuse_foret.png'),
+  (2, "Tétine", '/uploads/baby.png'),
+  (3, "Robe", '/uploads/dress.png'),
+  (4, "Pantalon", '/uploads/trousers.png'),
+  (5, "Accessoires", '/uploads/accessories.png'),
+  (6, "Gigoteuse jungle", '/uploads/gigoteuse_jungle.png'),
+  (7, "Chouchou vert", '/uploads/chouchou_vert.png'),
+  (8, "Chouchou rouge", '/uploads/chouchou_rouge.png'),
+  (9, "Atelier Maona", '/uploads/atelier.png'),
+  (10, "Bavoir", '/uploads/bavoir.png'),
+  (11, "Housse de carnet de santé", '/uploads/housse_carnet.png')
+;
+
+CREATE TABLE `productImage`(
+    `productId` INT NOT NULL,
+    `imageId` INT NOT NULL,
+    `coverPicture` BOOLEAN DEFAULT(FALSE),
+    FOREIGN KEY (productId) REFERENCES products(id),
+    FOREIGN KEY (imageId) REFERENCES images(id)
+);
+
+INSERT INTO `productImage` (
+  `productId`,
+  `imageId`,
+  `coverPicture`
+)
+VALUES
+  (1, 6, true),
+  (2, 1, true),
+  (3, 3, true),
+  (4, 3, true),
+  (5, 4, true),
+  (6, 3, true),
+  (7, 8, true),
+  (7, 7, false),
+  (8, 7, true),
+  (9, 10, true),
+  (10, 10, true),
+  (11, 5, true),
+  (12, 5, true),
+  (13, 7, true),
+  (13, 8, false),
+  (14, 11, true)
 ;
 
 

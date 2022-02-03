@@ -2,11 +2,15 @@ const connection = require('../db-config');
 
 const db = connection.promise();
 
+const mainQuery = `SELECT pdt.*, c.name AS category, r.text AS review, sc.name AS subcategory, pi.*, i.* FROM products pdt 
+LEFT JOIN categories c ON pdt.categoryId = c.id
+LEFT JOIN subCategories sc ON pdt.subCategoryId = sc.id
+LEFT JOIN reviews r ON r.productId = pdt.id
+LEFT JOIN productImage pi ON pi.productId = pdt.id
+LEFT JOIN images i ON pi.imageId = i.id`;
+
 const findAllProducts = ({ isAvailable, isEssential }) => {
-  let query = `SELECT pdt.*, c.name AS category, r.text AS review, sc.name AS subcategory FROM products pdt 
-  JOIN categories c ON pdt.categoryId = c.id
-  JOIN subCategories sc ON pdt.subCategoryId = sc.id
-  JOIN reviews r ON r.productId = pdt.id`;
+  let query = mainQuery;
 
   const params = [];
 
@@ -25,11 +29,7 @@ const findAllProducts = ({ isAvailable, isEssential }) => {
 };
 
 const findAllByCategory = (name, isAvailable) => {
-  let query = `SELECT pdt.*, c.name AS category, r.text AS review, sc.name AS subcategory FROM products pdt 
-  JOIN categories c ON pdt.categoryId = c.id
-  JOIN subCategories sc ON pdt.subCategoryId = sc.id
-  JOIN reviews r ON r.productId = pdt.id
-  WHERE c.name = ?`;
+  let query = `${mainQuery} WHERE c.name = ?`;
 
   const params = [name];
 
@@ -41,11 +41,7 @@ const findAllByCategory = (name, isAvailable) => {
   return db.query(query, params);
 };
 
-const findOneById = (id) => db.query(`SELECT pdt.*, c.name AS category, r.text AS review, sc.name AS subcategory FROM products pdt 
-JOIN categories c ON pdt.categoryId = c.id
-JOIN subCategories sc ON pdt.subCategoryId = sc.id
-JOIN reviews r ON r.productId = pdt.id
-WHERE pdt.id = ?`, [id]);
+const findOneById = (id) => db.query(`${mainQuery} WHERE pdt.id = ?`, [id]);
 
 const postProduct = ({
   name,
