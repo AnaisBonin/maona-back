@@ -143,7 +143,7 @@ VALUES
   (8, 'Chouchou vert', 'Chouchou vert en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un chouchou vert en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 25, 0, false, false, 1, 10),
   (9, 'Bavoir bébé', 'Bavoir bébé en coton - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un bavoir bébé en coton-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 78, 2, true, true, 2, 6),
   (10, 'Bavoir bébé large', 'Bavoir bébé large en coton - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un bavoir bébé largeen coton-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 86, 1, true, false, 2, 6),
-  (11, 'Couverture en coton', 'Couverture en coton - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'une couverture en coton-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 90, 3, true, true, 2, 9),
+  (11, 'Couverture en coton', 'Couverture en coton - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'une couverture en coton-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 90, 3, true, false, 2, 9),
   (12, 'Couverture en lin ', 'Couverture en lin  - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'une couverture en lin -  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 95, 2, true, false, 2, 9),
   (13, 'Chouchou bleu', 'Chouchou bleu en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'un chouchou bleu en soie - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 25, 20, true, false, 1, 10),
   (14, 'Housse de carnet de santé', 'Housse de carnet de santé - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante.', "Description d'une housse de carnet de santé - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porttitor, purus et accumsan scelerisque, arcu massa molestie massa, sit amet blandit erat tortor a ante. Cras ullamcorper turpis vitae laoreet elementum. Duis vestibulum sed dui sit amet efficitur.", 33, 3, true, false, 2, 8)
@@ -162,17 +162,17 @@ INSERT INTO `images` (
   `link`
 )
 VALUES
-  (1, "Gigoteuse forêt", '/uploads/gigoteuse_foret.png'),
+  (1, "Gigoteuse forêt", '/uploads/gigoteuse_foret.jpg'),
   (2, "Tétine", '/uploads/baby.png'),
   (3, "Robe", '/uploads/dress.png'),
   (4, "Pantalon", '/uploads/trousers.png'),
   (5, "Accessoires", '/uploads/accessories.png'),
-  (6, "Gigoteuse jungle", '/uploads/gigoteuse_jungle.png'),
-  (7, "Chouchou vert", '/uploads/chouchou_vert.png'),
+  (6, "Gigoteuse jungle", '/uploads/gigoteuse_jungle.jpg'),
+  (7, "Chouchou vert", '/uploads/chouchou_vert.jpg'),
   (8, "Chouchou rouge", '/uploads/chouchou_rouge.png'),
-  (9, "Atelier Maona", '/uploads/atelier.png'),
+  (9, "Atelier Maona", '/uploads/atelier.jpg'),
   (10, "Bavoir", '/uploads/bavoir.png'),
-  (11, "Housse de carnet de santé", '/uploads/housse_carnet.png')
+  (11, "Housse de carnet de santé", '/uploads/housse_carnet.jpg')
 ;
 
 CREATE TABLE `productImage`(
