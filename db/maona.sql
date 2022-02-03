@@ -251,7 +251,8 @@ CREATE TABLE `testimonials` (
 INSERT INTO `testimonials`(`id`, `text`, `userId`) 
 VALUES 
   (1, "J'adore les produits Maona. Les finissions sont parfaites, la qualité est excellente et le service client irreprochable. Je recommande !", 1),
-  (2, "J'ai passé commande chez Maona il y deux mois, depuis mon enfant dort tellement bien ! Leurs gigoteuses sont toutes douces", 2)
+  (2, "J'ai passé commande chez Maona il y deux mois, depuis mon enfant dort tellement bien ! Leurs gigoteuses sont toutes douces", 2),
+  (3, "Une amie m'a conseillé les produits Maona, pour leur qualité mais aussi pour l'engagement éthique de la marque.", 2)
 ;
 
 

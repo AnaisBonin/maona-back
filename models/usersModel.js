@@ -9,17 +9,18 @@ const findAllUsers = ({ email }) => {
     query += ' WHERE email = ?';
     params.push(email);
   }
+
   return db.query(query, params);
 };
 
 const findOneUser = (id) => db.query('SELECT * FROM users WHERE id = ?', [id]);
 
-const postUser = (
+const postUser = ({
   firstname,
   lastname,
   email,
-) => {
-  db.query(
+}) => {
+  return db.query(
     'INSERT INTO users (`firstname`, `lastname`, `email`) VALUES (?, ?, ?)',
     [
       firstname,

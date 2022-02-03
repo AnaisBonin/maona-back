@@ -7,6 +7,8 @@ const testimonialsRouter = require('./testimonialsRouter');
 const reviewsRouter = require('./reviewsRouter');
 const articlesRouter = require('./articlesRouter');
 const imagesRouter = require('./imagesRouter');
+const ordersRouter = require('./ordersRouter');
+const orderLinesRouter = require('./orderLinesRouter');
 
 const setupRoutes = (app) => {
   app.use(baseRouter);
@@ -18,6 +20,8 @@ const setupRoutes = (app) => {
   app.use('/reviews', reviewsRouter);
   app.use('/articles', articlesRouter);
   app.use('/images', imagesRouter);
+  app.use('/orders', ordersRouter);
+  app.use('/orderlines', orderLinesRouter);
 };
 
 module.exports = setupRoutes;
