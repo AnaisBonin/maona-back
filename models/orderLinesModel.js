@@ -20,7 +20,7 @@ const postOrderLine = ({
   orderId,
   productId,
 }) => db.query(
-  'INSERT INTO orderLines (productName, quantity, pricePack, pack, totalPrice, harvestDate, orderId, productId) VALUES (?, ?, ?, ?, ?, ?)',
+  'INSERT INTO orderLines (productName, quantity, price, totalPrice, orderId, productId) VALUES (?, ?, ?, ?, ?, ?)',
   [
     productName,
     quantity,

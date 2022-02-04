@@ -58,6 +58,7 @@ usersRouter.post('/', async (req, res) => {
   if (existingUser) {
     return res.status(409).json({
       message: 'This user already exists',
+      userId: existingUser.id,
     });
   }
   

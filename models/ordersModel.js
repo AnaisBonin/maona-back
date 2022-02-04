@@ -21,7 +21,7 @@ const postOrder = ({
   status,
   userId,
 }) => db.query(
-  'INSERT INTO orders (id, date, deliveryDate, totalOrder, status, userId) VALUES (?, ?, ?, ?, ?)',
+  'INSERT INTO orders (id, date, totalOrder, status, userId) VALUES (?, ?, ?, ?, ?)',
   [
     id,
     date,

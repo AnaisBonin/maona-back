@@ -11,7 +11,8 @@ const {
 const orderValidation = (isEdited = false) => {
   const presence = isEdited ? 'optional' : 'required';
   return Joi.object({
-    id: Joi.string().max(50).presence(presence),
+    id: Joi.number().presence(presence),
+    date: Joi.date().presence(presence),
     totalOrder: Joi.number().presence(presence),
     status: Joi.string().max(255).presence('optional'),
     userId: Joi.number().integer().presence(presence),
