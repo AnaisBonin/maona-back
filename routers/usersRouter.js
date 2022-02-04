@@ -50,18 +50,25 @@ usersRouter.post('/', async (req, res) => {
   const { value: validUser, error } = userValidation().validate(req.body);
 
   if (error) {
-    return res.status(400).json(error);
+    return res.status(422).json(error);
   }
 
-  const [[existingUser]] = await findAllUsers(validUser.email);
+  const [[existingUser]] = await findAllUsers(validUser);
 
   if (existingUser) {
     return res.status(409).json({
       message: 'This user already exists',
+      userId: existingUser.id,
     });
   }
-
-  return await postUser(validUser);
+  
+  try {
+    const [{ insertId }] = await postUser(validUser);
+    return res.status(201).json({ id: insertId, ...validUser});
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ message: 'Error saving the user', err});
+  }
 });
 
 usersRouter.put('/:id', async (req, res) => {
