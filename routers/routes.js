@@ -1,5 +1,6 @@
 const baseRouter = require('./baseRouter');
 const productsRouter = require('./productsRouter');
+const authRouter = require('./authRouter');
 const categoriesRouter = require('./categoriesRouter');
 const subCategoriesRouter = require('./subCategoriesRouter');
 const usersRouter = require('./usersRouter');
@@ -22,6 +23,7 @@ const setupRoutes = (app) => {
   app.use('/images', imagesRouter);
   app.use('/orders', ordersRouter);
   app.use('/orderlines', orderLinesRouter);
+  app.use('/authentification', authRouter);
 };
 
 module.exports = setupRoutes;
