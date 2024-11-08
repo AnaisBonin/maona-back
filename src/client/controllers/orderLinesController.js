@@ -5,7 +5,7 @@ const {
   findAllOrderLines,
   postOrderLine,
   putOrderLine,
-} = require('../../models/orderLinesModel');
+} = require('../../repositories/orderLinesRepository');
 
 const orderLineValidation = (isEdited = false) => {
   const presence = isEdited ? 'optional' : 'required';

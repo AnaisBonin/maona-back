@@ -7,7 +7,7 @@ const {
   postUser,
   putUser,
   deleteUser,
-} = require('../../models/usersModel');
+} = require('../../repositories/usersRepository');
 
 const userValidation = (isCreation = true) => {
   const presence = isCreation ? 'required' : 'optional';

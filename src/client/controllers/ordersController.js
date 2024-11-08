@@ -6,7 +6,7 @@ const {
   findOneOrder,
   postOrder,
   putOrder,
-} = require('../../infrastructure/models/ordersModel');
+} = require('../../infrastructure/repositories/ordersModel');
 
 const orderValidation = (isEdited = false) => {
   const presence = isEdited ? 'optional' : 'required';

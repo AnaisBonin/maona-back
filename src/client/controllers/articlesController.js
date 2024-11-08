@@ -3,7 +3,7 @@ const Joi = require('joi');
 
 const {
   findAllArticles,
-} = require('../../infrastructure/models/articlesModel');
+} = require('../../infrastructure/repositories/articlesModel');
 
 articlesController.get('/', async (req, res) => {
   try {

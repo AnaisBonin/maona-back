@@ -3,7 +3,7 @@ const Joi = require('joi');
 
 const {
   findAllReviews,
-} = require('../../models/reviewsModel');
+} = require('../../repositories/reviewsRepository');
 
 reviewsController.get('/', async (req, res) => {
   try {

@@ -3,7 +3,7 @@ const Joi = require('joi');
 
 const {
   findAllImages,
-} = require('../../models/imagesModel');
+} = require('../../repositories/imagesRepository');
 
 imagesController.get('/', async (req, res) => {
   try {

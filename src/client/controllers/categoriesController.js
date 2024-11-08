@@ -7,9 +7,9 @@ const {
   postCategory,
   putCategory,
   deleteCategory,
-} = require('../../models/categoriesModel');
+} = require('../../repositories/categoriesRepository');
 
-const { findAllByCategory } = require('../../models/productsModel');
+const { findAllByCategory } = require('../../repositories/productsRepository');
 
 const categoryValidation = (isCreation = true) => {
   const presence = isCreation ? 'required' : 'optional';

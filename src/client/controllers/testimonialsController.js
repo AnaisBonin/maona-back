@@ -3,7 +3,7 @@ const Joi = require('joi');
 
 const {
   findAllTestimonials,
-} = require('../../infrastructure/models/testimonialsModel');
+} = require('../../infrastructure/repositories/testimonialsModel');
 
 testimonialsController.get('/', async (req, res) => {
   try {
