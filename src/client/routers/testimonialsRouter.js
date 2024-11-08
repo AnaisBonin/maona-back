@@ -3,7 +3,7 @@ const Joi = require('joi');
 
 const {
   findAllTestimonials,
-} = require('../../models/testimonialsModel');
+} = require('../../infrastructure/models/testimonialsModel');
 
 testimonialsRouter.get('/', async (req, res) => {
   try {
