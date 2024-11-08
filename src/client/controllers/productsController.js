@@ -1,4 +1,4 @@
-const productsRouter = require('express').Router();
+const productsController = require('express').Router();
 const Joi = require('joi');
 
 const {
@@ -24,7 +24,7 @@ const productValidation = (isEdited = false) => {
   });
 };
 
-productsRouter.get('/', async (req, res) => {
+productsController.get('/', async (req, res) => {
   try {
     const [result] = await findAllProducts(req.query);
 
@@ -38,13 +38,13 @@ productsRouter.get('/', async (req, res) => {
   }
 });
 
-productsRouter.get('/:id', async (req, res) => {
+productsController.get('/:id', async (req, res) => {
   const { id } = req.params;
   const [[result]] = await findOneById(id);
   return res.json(result);
 });
 
-productsRouter.post('/', async (req, res) => {
+productsController.post('/', async (req, res) => {
   const { error, value: validProduct } = productValidation().validate(req.body);
 
   if (error) {
@@ -60,7 +60,7 @@ productsRouter.post('/', async (req, res) => {
   }
 });
 
-productsRouter.put('/:id', async (req, res) => {
+productsController.put('/:id', async (req, res) => {
   const { error, value: validProduct } = productValidation(true).validate(
     req.body,
   );
@@ -83,7 +83,7 @@ productsRouter.put('/:id', async (req, res) => {
   }
 });
 
-productsRouter.delete('/:id', async (req, res) => {
+productsController.delete('/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -99,4 +99,4 @@ productsRouter.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = productsRouter;
+module.exports = productsController;

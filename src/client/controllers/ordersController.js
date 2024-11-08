@@ -1,4 +1,4 @@
-const ordersRouter = require('express').Router();
+const ordersController = require('express').Router();
 const Joi = require('joi');
 
 const {
@@ -19,7 +19,7 @@ const orderValidation = (isEdited = false) => {
   });
 };
 
-ordersRouter.get('/', async (req, res) => {
+ordersController.get('/', async (req, res) => {
   try {
     const [result] = await findAllOrders(req.query);
     if (!result.length) {
@@ -34,13 +34,13 @@ ordersRouter.get('/', async (req, res) => {
   }
 });
 
-ordersRouter.get('/:id', async (req, res) => {
+ordersController.get('/:id', async (req, res) => {
   const { id } = req.params;
   const [result] = await findOneOrder(id);
   return res.json(result);
 });
 
-ordersRouter.post('/', async (req, res) => {
+ordersController.post('/', async (req, res) => {
   const { error, value: validOrder } = orderValidation().validate(req.body);
 
   if (error) {
@@ -56,7 +56,7 @@ ordersRouter.post('/', async (req, res) => {
   }
 });
 
-ordersRouter.put('/:id', async (req, res) => {
+ordersController.put('/:id', async (req, res) => {
   const { error, value: validOrder } = orderValidation(true).validate(
     req.body,
   );
@@ -79,4 +79,4 @@ ordersRouter.put('/:id', async (req, res) => {
   }
 });
 
-module.exports = ordersRouter;
+module.exports = ordersController;

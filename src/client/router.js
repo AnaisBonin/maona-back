@@ -1,14 +1,14 @@
-const baseRouter = require('./routers/baseRouter');
-const productsRouter = require('./routers/productsRouter');
-const categoriesRouter = require('./routers/categoriesRouter');
-const subCategoriesRouter = require('./routers/subCategoriesRouter');
-const usersRouter = require('./routers/usersRouter');
-const testimonialsRouter = require('./routers/testimonialsRouter');
-const reviewsRouter = require('./routers/reviewsRouter');
-const articlesRouter = require('./routers/articlesRouter');
-const imagesRouter = require('./routers/imagesRouter');
-const ordersRouter = require('./routers/ordersRouter');
-const orderLinesRouter = require('./routers/orderLinesRouter');
+const baseRouter = require('./controllers/baseController');
+const productsRouter = require('./controllers/productsController');
+const categoriesRouter = require('./controllers/categoriesController');
+const subCategoriesRouter = require('./controllers/subCategoriesController');
+const usersRouter = require('./controllers/usersController');
+const testimonialsRouter = require('./controllers/testimonialsController');
+const reviewsRouter = require('./controllers/reviewsController');
+const articlesRouter = require('./controllers/articlesController');
+const imagesRouter = require('./controllers/imagesController');
+const ordersRouter = require('./controllers/ordersController');
+const orderLinesRouter = require('./controllers/orderLinesController');
 
 const setupRoutes = (app) => {
   app.use(baseRouter);

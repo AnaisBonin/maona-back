@@ -1,4 +1,4 @@
-const subCategoriesRouter = require('express').Router();
+const subCategoriesController = require('express').Router();
 const Joi = require('joi');
 
 const {
@@ -18,7 +18,7 @@ const subCategoryValidation = (isCreation = true) => {
   });
 };
 
-subCategoriesRouter.get('/', async (req, res) => {
+subCategoriesController.get('/', async (req, res) => {
   try {
     const [result] = await findAllSubCategories(req.query);
 
@@ -32,20 +32,20 @@ subCategoriesRouter.get('/', async (req, res) => {
   }
 });
 
-subCategoriesRouter.get('/:id', async (req, res) => {
+subCategoriesController.get('/:id', async (req, res) => {
   const { id } = req.params;
   const [[result]] = await findOneSubCategory(id);
   return res.json(result);
 });
 
-subCategoriesRouter.get('/:name/products', async (req, res) => {
+subCategoriesController.get('/:name/products', async (req, res) => {
   const { name } = req.params;
   const { isAvailable } = req.query;
   const [result] = await findAllBySubCategory(name, isAvailable);
   return res.json(result);
 });
 
-subCategoriesRouter.post('/', async (req, res) => {
+subCategoriesController.post('/', async (req, res) => {
   const { error, value: validSubCategory } = subCategoryValidation().validate(req.body);
 
   if (error) {
@@ -61,7 +61,7 @@ subCategoriesRouter.post('/', async (req, res) => {
   }
 });
 
-subCategoriesRouter.put('/:id', async (req, res) => {
+subCategoriesController.put('/:id', async (req, res) => {
   const { error, value: validSubCategory } = subCategoryValidation(false).validate(
     req.body,
   );
@@ -84,7 +84,7 @@ subCategoriesRouter.put('/:id', async (req, res) => {
   }
 });
 
-subCategoriesRouter.delete('/:id', async (req, res) => {
+subCategoriesController.delete('/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -100,4 +100,4 @@ subCategoriesRouter.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = subCategoriesRouter;
+module.exports = subCategoriesController;

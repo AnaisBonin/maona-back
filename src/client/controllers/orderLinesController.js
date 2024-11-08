@@ -1,4 +1,4 @@
-const orderLinesRouter = require('express').Router();
+const orderLinesController = require('express').Router();
 const Joi = require('joi');
 
 const {
@@ -19,7 +19,7 @@ const orderLineValidation = (isEdited = false) => {
   });
 };
 
-orderLinesRouter.get('/', async (req, res) => {
+orderLinesController.get('/', async (req, res) => {
   try {
     const [result] = await findAllOrderLines(req.query);
 
@@ -35,7 +35,7 @@ orderLinesRouter.get('/', async (req, res) => {
   }
 });
 
-orderLinesRouter.post('/', async (req, res) => {
+orderLinesController.post('/', async (req, res) => {
   const { error, value: validOrderLine } = orderLineValidation().validate(
     req.body,
   );
@@ -53,7 +53,7 @@ orderLinesRouter.post('/', async (req, res) => {
   }
 });
 
-orderLinesRouter.put('/:id', async (req, res) => {
+orderLinesController.put('/:id', async (req, res) => {
   const { error, value: validOrderLine } = orderLineValidation(true).validate(
     req.body,
   );
@@ -76,4 +76,4 @@ orderLinesRouter.put('/:id', async (req, res) => {
   }
 });
 
-module.exports = orderLinesRouter;
+module.exports = orderLinesController;

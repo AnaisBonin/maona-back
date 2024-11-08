@@ -1,4 +1,4 @@
-const usersRouter = require('express').Router();
+const usersController = require('express').Router();
 const Joi = require('joi');
 
 const {
@@ -18,7 +18,7 @@ const userValidation = (isCreation = true) => {
   });
 };
 
-usersRouter.get('/', async (req, res) => {
+usersController.get('/', async (req, res) => {
   try {
     const [result] = await findAllUsers(req.query);
 
@@ -32,7 +32,7 @@ usersRouter.get('/', async (req, res) => {
   }
 });
 
-usersRouter.get('/:id', async (req, res) => {
+usersController.get('/:id', async (req, res) => {
   try {
     const [result] = await findOneUser(req.params.id);
 
@@ -46,7 +46,7 @@ usersRouter.get('/:id', async (req, res) => {
   }
 });
 
-usersRouter.post('/', async (req, res) => {
+usersController.post('/', async (req, res) => {
   const { value: validUser, error } = userValidation().validate(req.body);
 
   if (error) {
@@ -71,7 +71,7 @@ usersRouter.post('/', async (req, res) => {
   }
 });
 
-usersRouter.put('/:id', async (req, res) => {
+usersController.put('/:id', async (req, res) => {
   const { error, value: validUser } = userValidation(false).validate(req.body);
   const { id } = req.params;
 
@@ -87,7 +87,7 @@ usersRouter.put('/:id', async (req, res) => {
   }
 });
 
-usersRouter.delete('/:id', async (req, res) => {
+usersController.delete('/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -103,4 +103,4 @@ usersRouter.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = usersRouter;
+module.exports = usersController;

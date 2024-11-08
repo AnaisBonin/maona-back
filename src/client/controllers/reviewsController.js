@@ -1,13 +1,13 @@
-const articlesRouter = require('express').Router();
+const reviewsController = require('express').Router();
 const Joi = require('joi');
 
 const {
-  findAllArticles,
-} = require('../../infrastructure/models/articlesModel');
+  findAllReviews,
+} = require('../../models/reviewsModel');
 
-articlesRouter.get('/', async (req, res) => {
+reviewsController.get('/', async (req, res) => {
   try {
-    const [result] = await findAllArticles();
+    const [result] = await findAllReviews(req.query);
 
     if (!result.length) {
       return res.status(404).json({ message: 'No testimonilas found' });
@@ -19,4 +19,4 @@ articlesRouter.get('/', async (req, res) => {
   }
 });
 
-module.exports = articlesRouter;
+module.exports = reviewsController;

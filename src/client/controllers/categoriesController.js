@@ -1,4 +1,4 @@
-const categoriesRouter = require('express').Router();
+const categoriesController = require('express').Router();
 const Joi = require('joi');
 
 const {
@@ -18,7 +18,7 @@ const categoryValidation = (isCreation = true) => {
   });
 };
 
-categoriesRouter.get('/', async (req, res) => {
+categoriesController.get('/', async (req, res) => {
   try {
     const [result] = await findAllCategories();
 
@@ -32,20 +32,20 @@ categoriesRouter.get('/', async (req, res) => {
   }
 });
 
-categoriesRouter.get('/:id', async (req, res) => {
+categoriesController.get('/:id', async (req, res) => {
   const { id } = req.params;
   const [[result]] = await findOneCategory(id);
   return res.json(result);
 });
 
-categoriesRouter.get('/:name/products', async (req, res) => {
+categoriesController.get('/:name/products', async (req, res) => {
   const { name } = req.params;
   const { isAvailable } = req.query;
   const [result] = await findAllByCategory(name, isAvailable);
   return res.json(result);
 });
 
-categoriesRouter.post('/', async (req, res) => {
+categoriesController.post('/', async (req, res) => {
   const { error, value: validCategory } = categoryValidation().validate(req.body);
 
   if (error) {
@@ -61,7 +61,7 @@ categoriesRouter.post('/', async (req, res) => {
   }
 });
 
-categoriesRouter.put('/:id', async (req, res) => {
+categoriesController.put('/:id', async (req, res) => {
   const { error, value: validCategory } = categoryValidation(false).validate(
     req.body,
   );
@@ -84,7 +84,7 @@ categoriesRouter.put('/:id', async (req, res) => {
   }
 });
 
-categoriesRouter.delete('/:id', async (req, res) => {
+categoriesController.delete('/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -100,4 +100,4 @@ categoriesRouter.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = categoriesRouter;
+module.exports = categoriesController;
