@@ -7,7 +7,7 @@ const {
   postProduct,
   putProduct,
   deleteProduct,
-} = require('../models/productsModel');
+} = require('../../models/productsModel');
 
 const productValidation = (isEdited = false) => {
   const presence = isEdited ? 'optional' : 'required';

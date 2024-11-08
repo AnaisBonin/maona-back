@@ -12,7 +12,7 @@ connection.connect((err) => {
   }
 });
 
-const setupRoutes = require('./routers/routes');
+const setupRoutes = require('./client/routers/routes');
 
 const app = express();
 const port = process.env.PORT || 8000;

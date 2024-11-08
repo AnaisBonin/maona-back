@@ -1,13 +1,13 @@
-const reviewsRouter = require('express').Router();
+const imagesRouter = require('express').Router();
 const Joi = require('joi');
 
 const {
-  findAllReviews,
-} = require('../models/reviewsModel');
+  findAllImages,
+} = require('../../models/imagesModel');
 
-reviewsRouter.get('/', async (req, res) => {
+imagesRouter.get('/', async (req, res) => {
   try {
-    const [result] = await findAllReviews(req.query);
+    const [result] = await findAllImages(req.query);
 
     if (!result.length) {
       return res.status(404).json({ message: 'No testimonilas found' });
@@ -19,4 +19,4 @@ reviewsRouter.get('/', async (req, res) => {
   }
 });
 
-module.exports = reviewsRouter;
+module.exports = imagesRouter;

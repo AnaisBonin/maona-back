@@ -7,9 +7,9 @@ const {
   postSubCategory,
   putSubCategory,
   deleteSubCategory,
-} = require('../models/subCategoriesModel');
+} = require('../../models/subCategoriesModel');
 
-const { findAllBySubCategory } = require('../models/productsModel');
+const { findAllBySubCategory } = require('../../models/productsModel');
 
 const subCategoryValidation = (isCreation = true) => {
   const presence = isCreation ? 'required' : 'optional';
