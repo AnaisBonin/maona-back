@@ -1,6 +1,9 @@
 # Dependency directories
 node_modules/
 
+# Jet Brain
+.idea
+
 # misc
 .DS_Store
 package-lock.json
